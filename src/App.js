@@ -5,10 +5,8 @@ import MovieList from "./Components/Movies/MovieList";
 import NavbarC from "./Components/Navbar/Navbar";
 import { useState } from "react";
 import Add from "./Components/Add/Add";
-import { Switch } from "react-router-dom";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Description from "./Pages/Description";
-import Trailer from "./Pages/Trailer";
 
 function App() {
   //declare a state to add a new movie by the user
@@ -33,22 +31,23 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route
-          path="/description"
-          render={(props) => <Description {...props} />}
-        />
-        <Route path="/trailer" render={(props) => <Trailer {...props} />} />
-        <Route path="/">
+        <Route exact path="/">
+          <Add addMovie={addMovie} />
           <NavbarC
             handleSearch={handleSearch}
             handleRating={handleRating}
             text={text}
             newRating={newRating}
           />
-          <Add addMovie={addMovie} />
           <MovieList items={movie} text={text} newRating={newRating} />
           <FooterC />
         </Route>
+        <Route
+          path="/description"
+          component={Description}
+          // path="/description/:movie.id"
+          // render={(props) => <Description {...props} movie={movie} />}
+        />
       </Switch>
     </div>
   );

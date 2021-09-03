@@ -4,7 +4,8 @@ import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
-import TrailerAndDescription from "./TrailerAndDescription";
+import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 const MovieCard = ({ movie, handleName }) => {
   return (
@@ -14,55 +15,64 @@ const MovieCard = ({ movie, handleName }) => {
         <div className="container" onClick={() => handleName(movie.name)}>
           <a href="cover">
             <iframe
-              className="cover"
-              width="560"
-              height="315"
               src={movie.trailer}
-              title="YouTube video player"
+              title={movie.name}
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
+              alt="cover"
+              className="cover"
             ></iframe>
           </a>
           <div
             className="hero"
             style={{
               backgroundImage: `url(${movie.image})`,
-              backgroundPosition: "center center",
+              backgroundPosition: "center right",
               backgroundSize: "100% 100%",
               backgroundRepeat: "no-repeat",
               backgroundColor: "transparent",
-              opacity: 0.5,
+              // opacity: 0.5,
             }}
           >
             <div className="details">
               <div className="title1">
                 <span>{movie.name}</span>
-                <Box component="fieldset" mb={3} borderColor="transparent">
-                  <Typography component="legend"></Typography>
-                  <Rating
-                    name="read-only"
-                    value={movie.rating}
-                    readOnly
-                    precision={0.5}
-                    emptyIcon={<StarBorderIcon fontSize="inherit" />}
-                    style={{ color: "red" }}
-                  />
-                </Box>
               </div>
+              <Box component="fieldset" mb={3} borderColor="transparent">
+                <Typography component="legend"></Typography>
+                <Rating
+                  name="read-only"
+                  value={movie.rating}
+                  readOnly
+                  precision={0.5}
+                  emptyIcon={<StarBorderIcon fontSize="inherit" />}
+                  style={{ color: "red" }}
+                />
+              </Box>
+              <span className="tag"> {movie.type}</span>
+              <span className="tag">{movie.date}</span>
             </div>{" "}
             {/* end details */}
           </div>{" "}
           {/* end hero */}
           <div className="description">
-            <span>{movie.date}</span>
             <div className="column1">
-              <span className="tag"> {movie.type}</span>
+              <Link
+                to={{
+                  // pathname: `description/${movie.id}`,
+                  pathname: "description",
+                  state: { movie },
+                }}
+              >
+                <Button variant="outlined" color="secondary">
+                  Watch trailer
+                </Button>
+              </Link>
             </div>{" "}
             {/* end column1 */}
             <div className="column2">
-              {movie.description}... <a href="description">read more</a>
-              <TrailerAndDescription movie={movie} />
+              <p>{movie.description}... </p>
               <div className="avatars">
                 <a href="person 1" data-tooltip="Person 1" data-placement="top">
                   <img

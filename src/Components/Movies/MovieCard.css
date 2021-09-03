@@ -53,8 +53,6 @@ a:hover {
   overflow: hidden;
   top: 0;
   left: 0;
-  /* background: red; */
-  /* background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_bg.jpg"); */
   z-index: -1;
   transform: skewY(-2.2deg);
   transform-origin: 0 0;
@@ -72,12 +70,13 @@ a:hover {
 }
 
 .details {
-  padding: 190px 0 0 280px;
+  padding: 150px 0 0 250px;
 }
 
 .details .title1 {
   color: white;
-  font-size: 44px;
+  font-size: 45px;
+  line-height: 25px;
   margin: 1%;
   position: relative;
   padding: 0%;
@@ -103,9 +102,9 @@ a:hover {
 }
 
 .column1 {
-  padding-left: 50px;
-  padding-top: 120px;
-  width: 235px;
+  /* padding-left: 15px; */
+  padding-top: 80px;
+  width: 240px;
   float: left;
   text-align: center;
 }
@@ -113,19 +112,20 @@ a:hover {
 .tag {
   background: white;
   border-radius: 10px;
+  /* color: #fff; */
   padding: 3px 8px;
-  font-size: 14px;
-  margin-right: 4px;
-  line-height: 35px;
+  font-size: 20px;
+  margin-left: 10px;
+  line-height: 25px;
   cursor: pointer;
 }
 
 .tag:hover {
-  background: #ddd;
+  background: #ccc;
 }
 
 .column2 {
-  padding-left: 41px;
+  padding-left: 30px;
   padding-top: 30px;
   margin-left: 20px;
   width: 480px;
