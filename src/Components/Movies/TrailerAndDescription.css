@@ -1,0 +1,13 @@
+.links {
+  display: flex;
+  /* justify-content: space-around; */
+  list-style-type: none;
+}
+
+li {
+  margin-left: 5%;
+  background-color: #fff;
+  color: #ddd;
+  border: solid #fff;
+  border-radius: 0.8rem;
+}
